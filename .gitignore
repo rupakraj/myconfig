@@ -3,4 +3,4 @@ bak
 *.bak
 *.pwd
 *.nouse
-*.lock
+*-lock.json
