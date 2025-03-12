@@ -2,3 +2,5 @@ __pycache__
 bak
 *.bak
 *.pwd
+*.nouse
+*.lock
