@@ -4,3 +4,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.g.mapleader = " "
 
+
+-- editor default configs
+vim.cmd("set number")
+
