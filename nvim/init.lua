@@ -10,7 +10,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
                 { out, "WarningMsg" },
                 { "\nPress any key to exit..." },
             },
-            true, 
+            true,
             {}
         )
         vim.fn.getchar()
@@ -24,3 +24,5 @@ require("vim-options")
 require("lazy").setup("plugins")
 
 require("lsp-options")
+require("code-navigation")
+
