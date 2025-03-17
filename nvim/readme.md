@@ -4,11 +4,12 @@ All the plugins are organized into the lua/plugins folder.
 
 The initialization of the plugins are being managed by `init.lua`
 
-## Plaugins
+## Plugins
 The plugins so far used
 - Telescope
-- bufferline
-- commander - yet to configure
-- catppuccin - color themes
-- lualine
-- treesitter
+- Buffer line
+- Commander - yet to configure
+- Catppuccin - color themes
+- Lualine
+- Tree-Sitter
+
