@@ -25,4 +25,6 @@ require("lazy").setup("plugins")
 
 require("lsp-options")
 require("code-navigation")
+require("neovide")
+require("prog-comment-toggle")
 

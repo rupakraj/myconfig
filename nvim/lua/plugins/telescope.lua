@@ -6,8 +6,19 @@ return {
         },
         config = function()
             local builtin = require("telescope.builtin")
-            vim.keymap.set('n', '<C-p>', builtin.find_files, { })
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { })
+            vim.keymap.set('n', '<C-p>', function()
+                builtin.find_files({
+                    cwd =  vim.fn.getcwd(-1),
+                    previewer = false,
+                })
+            end,  { desc = 'Find files in the root directory' })
+
+            vim.keymap.set('n', '<C-S-p>', builtin.commands, {desc = 'List all available commands in Telescope'})
+
+            vim.keymap.set('n', '<leader>fg',  function()
+                builtin.live_grep({ cwd =  vim.fn.getcwd(-1) })
+            end,{ desc = 'Grep on the working directory' })
+
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
         end
     },

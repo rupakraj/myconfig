@@ -21,9 +21,6 @@ vim.api.nvim_set_keymap('n', '<C-S-End>', 'vG', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('v', '<C-S-Home>', 'gg', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-S-End>', 'G', { noremap = true, silent = true })
 
-
-
-
 -- copy paste and undo
 vim.api.nvim_set_keymap('n', '<C-c>', '"+y', { noremap = true, silent = true }) -- Copy
 vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true }) -- Copy in visual mode
@@ -33,4 +30,6 @@ vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-z>', 'u', { noremap = true, silent = true }) -- Undo
 vim.api.nvim_set_keymap('i', '<C-z>', '<C-o>u', { noremap = true, silent = true }) -- Undo in insert mode
 vim.api.nvim_set_keymap('n', '<C-y>', '<C-r>', { noremap = true, silent = true }) -- Redo
+
+vim.keymap.set({'n','v','i'}, '<C-s>', ':w<CR>', { })
 

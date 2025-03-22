@@ -1,10 +1,10 @@
+-- General otions for the vim
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.g.mapleader = " "
 
-
--- editor default configs
+vim.cmd("set mouse=a")
 vim.cmd("set number")
-
+vim.cmd("set cursorline")
