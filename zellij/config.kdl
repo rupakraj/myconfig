@@ -1,0 +1,20 @@
+default_layout "default"
+default_mode "locked"
+mouse_mode true
+theme "catppuccin-mocha"
+
+//ui {
+//    pane_frames false
+//    status_bar false
+//}
+
+//layout {
+//  pane size=1 borderless=true {
+//    plugin location "zellij:tab-bar"
+//  }
+//  pane size=1 borderless=true {
+//    plugin location "zellij:status-bar"
+//  }
+//  pane
+//}
+
