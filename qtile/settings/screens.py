@@ -2,23 +2,21 @@ from libqtile.config import Screen
 from libqtile import bar
 from libqtile.log_utils import logger
 from .widgets import secondary_widgets , primary_widgets
-# from .widgets import secondary_widgets, secondary_widgets as primary_widgets
 import subprocess
 
 
 def status_bar(widgets):
-    return bar.Bar(widgets, 24, opacity=0.92, margin=[5, 5, 3, 5])
+    return bar.Bar(widgets, 24, opacity=0.80, margin=[5, 5, 3, 5])
 
-
-screens = [Screen(top=status_bar(primary_widgets))]
+screens = [ Screen(top = status_bar(primary_widgets)) ]
 
 xrandr = "xrandr | grep -w 'connected' | cut -d ' ' -f 2 | wc -l"
 
 command = subprocess.run(
     xrandr,
-    shell=True,
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE,
+    shell = True,
+    stdout = subprocess.PIPE,
+    stderr = subprocess.PIPE,
 )
 
 if command.returncode != 0:

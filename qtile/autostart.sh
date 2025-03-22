@@ -23,3 +23,10 @@ flameshot &
 blueman-applet &
 
 nm-applet &
+
+xrandr --output eDP --mode 1920x1200 --rate 60 &
+
+
+
+# keyboard mapping
+setxkbmap -option caps:escape &

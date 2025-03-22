@@ -1,5 +1,7 @@
+from datetime import datetime
+import pytz
 from libqtile import widget
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 from libqtile.bar import CALCULATED
 
 from qtile_extras import widget
@@ -8,6 +10,11 @@ from qtile_extras.widget import decorations
 from .theme import colors
 
 
+
+# AoE
+aoe_tz = pytz.timezone('Etc/GMT+12')  # UTC-12
+ist_tz = pytz.timezone('Asia/Kolkata')  #IST
+    
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
 
@@ -82,11 +89,11 @@ def workspaces():
         widget.Spacer(**base(bg="dark")),
         widget.WindowName(
             **base(fg="focus"),
-            fontsize=18,
+            fontsize=15,
             padding=5,
             format="{name}",
-            max_chars=60,
-            width=CALCULATED,
+            max_chars=100,
+            # width=CALCULATED,
         ),
         widget.Spacer(**base(bg="dark")),
         separator(),
@@ -109,7 +116,7 @@ primary_widgets = [
     # ),
     widget.Sep(**base(), linewidth=0, padding=5, **decoration_slash),
     widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65),
-    widget.CurrentLayout(**base(bg="color2"), padding=5, **decoration_slash),
+    # widget.CurrentLayout(**base(bg="color2"), padding=5, **decoration_slash),
 
     # Check the naming convention here: 
     # cat /sys/class/power_supply/BATT/model_name
@@ -121,10 +128,6 @@ primary_widgets = [
         text_discharging = '󰂍 ({percentage:.0f}%) {tte}',
         **decoration_slash
     ),
-    # widget.GUPGraph(
-    #     **base(bg="color2")
-    #     **decoration_slash
-    # ),
     widget.WiFiIcon(
         **base(bg="color3"),
         interface="wlp1s0",
@@ -136,19 +139,28 @@ primary_widgets = [
         # mouse_callbacks={"Button1": lazy.spawn("nm-applet")},
         **decoration_slash,
     ),
+    widget.KeyboardLayout(
+        **base(bg="color1"),
+        configured_keyboards=['us','np'],
+        **decoration_slash,
+    ),
     
-    # widget.Mpris2(
-    #     **decoration_spotify,
-    #     foreground="ffffff",
-    #     name="spotify",
-    #     paused_text=" : {track}",
-    #     stop_text="  ",
-    #     display_metadata=["xesam:title", "xesam:artist"],
-    #     objname="org.mpris.MediaPlayer2.spotify",
-    #     width=175,
-    #     scroll_interval=0.3,
-    # ),
     widget.Systray(background=colors["black"], padding=5, **decoration_slash),
+
+    
+    # widget.TextBox(
+    #     **base(bg="color3"),
+    #     text="CHiPSAL-30Oct",
+    #     **decoration_slash,
+    # ),
+    
+    # widget.Clock(
+    #     **base(bg="color3"), 
+    #     format   = " %d %b / %I:%M%p ", 
+    #     fmt="IST {}",
+    #     timezone = ist_tz,
+    #     **decoration_slash,
+    # ),
     widget.Clock(
         **base(bg="color1"), format=" %d %b / %I:%M%p ", fmt="  {}"
     ),
@@ -160,8 +172,8 @@ secondary_widgets = [
     separator(),
     widget.Sep(**base(), linewidth=0, padding=5, **decoration_slash),
     # powerline('color1', 'dark'),
-    widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65,),
-    widget.CurrentLayout(**base(bg="color2"), padding=5, **decoration_slash),
+    widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65, padding=5, **decoration_slash),
+    # widget.CurrentLayout(**base(bg="color2"), padding=5, **decoration_slash),
     # powerline('color2', 'color1'),
     widget.Clock(
         **base(bg="color1"), 
