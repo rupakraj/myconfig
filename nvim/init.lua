@@ -7,7 +7,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         vim.api.nvim_echo(
             {
                 { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-                { out, "WarningMsg" },
+                { out,                            "WarningMsg" },
                 { "\nPress any key to exit..." },
             },
             true,
@@ -20,11 +20,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+require("neovide")
 require("vim-options")
+
 require("lazy").setup("plugins")
 
-require("lsp-options")
+-- additional lua scritps
 require("code-navigation")
-require("neovide")
-require("prog-comment-toggle")
+-- require("editor-options")
 

@@ -8,3 +8,16 @@ vim.g.mapleader = " "
 vim.cmd("set mouse=a")
 vim.cmd("set number")
 vim.cmd("set cursorline")
+
+-- wrapping
+vim.cmd("set wrap")
+vim.cmd("set linebreak")
+vim.cmd("set breakindent")
+vim.cmd("set textwidth=80")
+
+-- vim.opts.rocks.enabled = false
+vim.filetype.add({
+    extension = {
+        djhtml = "htmldjango",
+    }
+})
