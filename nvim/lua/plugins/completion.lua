@@ -30,6 +30,7 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
         },
+        build = "make install_jsregexp",
     },
     {
         "hrsh7th/nvim-cmp",
@@ -60,6 +61,12 @@ return {
                     }, {
                     { name = "buffer" },
                 }),
+            })
+            cmp.setup.filetype({"sql"}, {
+                sources = {
+                    { name = "vim-dadbod-completion" },
+                    { name = "buffer" }
+                }
             })
         end,
     },
