@@ -4,3 +4,8 @@ bak
 *.pwd
 *.nouse
 *-lock.json
+
+# folders
+build
+output
+
