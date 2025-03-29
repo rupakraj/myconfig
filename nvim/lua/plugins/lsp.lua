@@ -13,14 +13,15 @@ return {
                     "lua_ls",
                     "ts_ls",
                     "jsonls",
-                    "ltex",
-                    -- "pylsp",
                     "pyright",
                     "sqlls",
                     "bashls",
                     "cssls",
                     "html",
                     "clangd",
+                    "texlab",
+                    "marksman",
+                    "jinja_lsp",
                 }
             })
         end
@@ -34,7 +35,6 @@ return {
 
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.ts_ls.setup({capabilities = capabilities})
-            lspconfig.ltex.setup({capabilities = capabilities})
             lspconfig.jsonls.setup({capabilities = capabilities})
             lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.sqlls.setup({capabilities = capabilities})
@@ -42,6 +42,11 @@ return {
             lspconfig.cssls.setup({capabilities = capabilities})
             lspconfig.html.setup({capabilities = capabilities})
             lspconfig.clangd.setup({capabilities = capabilities})
+            lspconfig.marksman.setup({capabilities = capabilities})
+            lspconfig.jinja_lsp.setup({
+                filetypes = { "html", "jinja", "jinja2", "djhtml", "htmldjango" },
+                capabilities = capabilities,
+            })
             --lspconfig.
             --vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             --vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
