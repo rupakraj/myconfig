@@ -15,6 +15,9 @@ vim.cmd("set linebreak")
 vim.cmd("set breakindent")
 vim.cmd("set textwidth=80")
 
+-- clipboard share with OS
+vim.opt.clipboard = "unnamedplus"
+
 -- vim.opts.rocks.enabled = false
 vim.filetype.add({
     extension = {
