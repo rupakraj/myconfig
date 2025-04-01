@@ -7,7 +7,7 @@ return {
                 {
                     desc = "Toggle File outline",
                     cmd  = "<cmd>Outline<CR>",
-                    keys = { "n", "<leader>o>"}
+                    keys = { "n", "<leader>ol"}
                 },
             })
 
