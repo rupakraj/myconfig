@@ -27,5 +27,5 @@ require("lazy").setup("plugins")
 
 -- additional lua scritps
 require("code-navigation")
--- require("editor-options")
+require("editor-customization")
 
