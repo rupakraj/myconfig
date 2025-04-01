@@ -1,7 +1,10 @@
----- return {
+-- Completion Configuration examples
+-- -- https://smarttech101.com/nvim-lsp-autocompletion-mapping-snippets-fuzzy-search
+--
+-- return {
 --    {
 --        'saghen/blink.cmp',
---        dependencies = 'rafamadriz/friendly-snippets',  
+--        dependencies = 'rafamadriz/friendly-snippets',
 --        version = '*',
 --        opts = {
 --            keymap = { preset = 'default' },
@@ -22,9 +25,6 @@
 
 return {
     {
-        "hrsh7th/cmp-nvim-lsp"
-    },
-    {
         "l3mon4d3/luasnip",
         dependencies = {
             "saadparwaiz1/cmp_luasnip",
@@ -34,11 +34,16 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
+        dependencies = {
+            "onsails/lspkind-nvim",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = function()
             local cmp = require("cmp")
+            local lspkind = require("lspkind")
             require("luasnip.loaders.from_vscode").lazy_load()
 
-            cmp.setup({
+            cmp.setup {
                 snippet = {
                     expand = function(args)
                         require("luasnip").lsp_expand(args.body)
@@ -48,20 +53,26 @@ return {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
-                mapping = cmp.mapping.preset.insert({
-                    ["<c-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<c-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<c-space>"] = cmp.mapping.complete(),
-                    ["<c-e>"] = cmp.mapping.abort(),
-                    ["<cr>"] = cmp.mapping.confirm({ select = true }),
-                }),
-                sources = cmp.config.sources({
-                        { name = "nvim_lsp" },
-                        { name = "luasnip" }, -- for luasnip users.
-                    }, {
+                formatting = {
+                    format = lspkind.cmp_format(),
+                },
+                mapping = {
+                    ["<C-n>"] = cmp.mapping.select_next_item(),
+                    ["<C-p>"] = cmp.mapping.select_prev_item(),
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                },
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" }, -- for luasnip users.
                     { name = "buffer" },
-                }),
-            })
+                    { name = "path" },
+                    { name = "cmdline" },
+                },
+            }
             cmp.setup.filetype({"sql"}, {
                 sources = {
                     { name = "vim-dadbod-completion" },
@@ -70,5 +81,13 @@ return {
             })
         end,
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true,
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
+    },
+
 }
 
