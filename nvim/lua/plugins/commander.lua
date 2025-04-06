@@ -1,7 +1,8 @@
 return {
     "FeiyouG/commander.nvim",
     dependencies = {
-        "nvim-telescope/telescope.nvim"
+        "nvim-telescope/telescope.nvim",
+        "folke/trouble.nvim",
     },
     config = function()
         require("commander").setup({
