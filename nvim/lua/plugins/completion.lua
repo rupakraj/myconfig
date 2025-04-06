@@ -1,54 +1,27 @@
 -- Completion Configuration examples
 -- -- https://smarttech101.com/nvim-lsp-autocompletion-mapping-snippets-fuzzy-search
---
--- return {
---    {
---        'saghen/blink.cmp',
---        dependencies = 'rafamadriz/friendly-snippets',
---        version = '*',
---        opts = {
---            keymap = { preset = 'default' },
---
---            appearance = {
---                 use_nvim_cmp_as_default = true,
---                nerd_font_variant = 'mono'
---            },
---            sources = {
---                default = { 'lsp', 'path', 'snippets', 'buffer' },
---            },
---            fuzzy = { implementation = "prefer_rust_with_warning" }
---        },
---        opts_extend = { "sources.default" }
---    },
---}
-
-
 return {
-    {
-        "l3mon4d3/luasnip",
-        dependencies = {
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
-        },
-        build = "make install_jsregexp",
-    },
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "onsails/lspkind-nvim",
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
+            { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+            "rafamadriz/friendly-snippets",
+            "saadparwaiz1/cmp_luasnip",
         },
         config = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
+            lspkind.init{}
             require("luasnip.loaders.from_vscode").lazy_load()
 
+            vim.opt.completeopt = { "menu", "menuone", "noselect" }
+            vim.opt.shortmess:append "c"
+
             cmp.setup {
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
@@ -57,20 +30,30 @@ return {
                     format = lspkind.cmp_format(),
                 },
                 mapping = {
-                    ["<C-n>"] = cmp.mapping.select_next_item(),
-                    ["<C-p>"] = cmp.mapping.select_prev_item(),
+                    ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+                    ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-y>"] = cmp.mapping(
+                        cmp.mapping.confirm {
+                            behavior = cmp.ConfirmBehavior.Insert,
+                            select = true
+                        }, { "i", "c"}
+                    ),
                 },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "luasnip" }, -- for luasnip users.
                     { name = "buffer" },
                     { name = "path" },
-                    { name = "cmdline" },
+                    -- { name = "cmdline" },
+                },
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end
                 },
             }
             cmp.setup.filetype({"sql"}, {
@@ -88,6 +71,4 @@ return {
         -- use opts = {} for passing setup options
         -- this is equivalent to setup({}) function
     },
-
 }
-

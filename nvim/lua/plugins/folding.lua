@@ -6,7 +6,7 @@ return {
         },
 
         config = function()
-            ufo = require('ufo')
+            local ufo = require('ufo')
 
             vim.o.foldcolumn = '1' -- '0' is not bad
             vim.o.foldlevel = 5 -- Using ufo provider need a large value, feel free to decrease the value
@@ -15,6 +15,7 @@ return {
             vim.o.fillchars = "foldopen:,foldclose:,foldsep:│,fold: "
             -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
             -- vim.o.statuscolumn = '%=%l%s%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▼" : "⏵") : " " }'
+
             vim.o.statuscolumn='%=%l%s%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "-" : "+") : "│") : " " }'
 
             vim.opt.foldmethod = "expr"

@@ -1,9 +1,8 @@
 return {
     {
         "numToStr/Comment.nvim",
-        opts = { },
         config = function ()
-            require("Comment").setup(opts)
+            require("Comment").setup()
         end
     },
 
@@ -23,7 +22,7 @@ return {
 --                     "org",
 --                 },
 --             })
--- 
+--
 --             local commander = require("commander")
 --             commander.add({
 --                 {
