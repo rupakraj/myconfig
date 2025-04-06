@@ -20,6 +20,9 @@ return {
             end,{ desc = 'Grep on the working directory' })
 
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+            vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
+            vim.keymap.set('n', '<leader>ff', builtin.find_files)
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags)
         end
     },
     {
