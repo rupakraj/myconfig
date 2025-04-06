@@ -2,11 +2,11 @@ if vim.g.neovide then
     -- vim.o.guifont = "UbuntuMono Nerd Font:h13"
     -- vim.o.guifont = "Noto Sans Mono:h10"
     -- vim.o.guifont = "Roboto Mono Light for Powerline:h10"
-    vim.o.guifont = "Source Code Pro for Powerline:h12:#h-slight"
+    -- vim.o.guifont = "Source Code Pro for Powerline:h12:#h-slight"
     -- vim.o.guifont = "Source Code Pro for Powerline:h11"
     --  vim.o.guifont = "JetBrainsMonoNL Nerd Font Mono:h11"
 
-    -- vim.o.guifont = "JetBrainsMono Nerd Font Propo:h11"  
+    -- vim.o.guifont = "JetBrainsMono Nerd Font Propo:h11"
     -- vim.g.neovide_transparency = 1             -- Transparency
     vim.g.neovide_scroll_animation_length = 0.3  -- Smooth scrolling
     vim.g.neovide_cursor_animation_length = 0    -- Cursor animation
@@ -29,5 +29,5 @@ if vim.g.neovide then
     -- vim.g.neovide_text_contrast = 0.1
 end
 
--- vim.o.guifont = "JetBrainsMonoNL Nerd Font Mono:h11"
+-- vim.o.guifont = "Noto Sans Devanagari:h14" --JetBrainsMonoNL Nerd Font Mono:h11"
 
