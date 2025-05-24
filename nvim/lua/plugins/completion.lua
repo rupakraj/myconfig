@@ -29,19 +29,39 @@ return {
                 formatting = {
                     format = lspkind.cmp_format(),
                 },
+                -- mapping = {
+                --     ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+                --     ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+                --     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                --     ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                --     ["<C-space>"] = cmp.mapping.complete(),
+                --     ["<C-e>"] = cmp.mapping.abort(),
+                --     ["<C-y>"] = cmp.mapping(
+                --         cmp.mapping.confirm {
+                --             behavior = cmp.ConfirmBehavior.Insert,
+                --             select = true
+                --         }, { "i", "c"}
+                --     ),
+                -- },
                 mapping = {
-                    ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-                    ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<C-y>"] = cmp.mapping(
-                        cmp.mapping.confirm {
-                            behavior = cmp.ConfirmBehavior.Insert,
-                            select = true
-                        }, { "i", "c"}
-                    ),
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                    ['<Tab>'] = cmp.mapping(function(fallback)
+                      if cmp.visible() then
+                        cmp.select_next_item()
+                      else
+                        fallback()
+                      end
+                    end, { 'i', 's' }),
+                    ['<S-Tab>'] = cmp.mapping(function(fallback)
+                      if cmp.visible() then
+                        cmp.select_prev_item()
+                      else
+                        fallback()
+                      end
+                    end, { 'i', 's' }),
+                },
+                experimental = {
+                    ghost_text = true,
                 },
                 sources = {
                     { name = "nvim_lsp" },
