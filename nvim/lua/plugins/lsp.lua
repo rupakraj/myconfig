@@ -28,10 +28,16 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        dependencies = { "saghen/blink.cmp" },
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            -- "saghen/blink.cmp"
+        },
         config = function()
             local lspconfig = require("lspconfig")
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
+            -- local capabilities = require('blink.cmp').get_lsp_capabilities()
+            -- capabilities.textDocument.codeLens = { dynamicRegistration = False }
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            -- capabilities.textDocument.inlineCompletion = true
 
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.ts_ls.setup({capabilities = capabilities})

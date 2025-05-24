@@ -29,3 +29,4 @@ require("lazy").setup("plugins")
 require("code-navigation")
 require("editor-customization")
 
+vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Run CodeLens" })
