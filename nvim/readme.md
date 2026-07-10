@@ -13,3 +13,9 @@ The plugins so far used
 - Lualine
 - Tree-Sitter
 
+# Setting for writing documents
+**LaTeX**
+
+**Markdown**
+
+This is the example of path [Test](qtile/README.md)

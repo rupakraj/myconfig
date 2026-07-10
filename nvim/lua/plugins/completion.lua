@@ -12,6 +12,7 @@ return {
             "rafamadriz/friendly-snippets",
             "saadparwaiz1/cmp_luasnip",
         },
+
         config = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
@@ -60,9 +61,9 @@ return {
                       end
                     end, { 'i', 's' }),
                 },
-                experimental = {
-                    ghost_text = true,
-                },
+                -- experimental = {
+                --     ghost_text = true,
+                -- },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "luasnip" }, -- for luasnip users.

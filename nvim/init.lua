@@ -29,4 +29,21 @@ require("lazy").setup("plugins")
 require("code-navigation")
 require("editor-customization")
 
+-- sursa ai test
+-- require("sursa-ai-assist")
 vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Run CodeLens" })
+
+-- snippet setup
+require("snippets/tex")
+-- require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets/" })
+
+
+-- custom functions
+require("paste-image")
+vim.keymap.set("n", "<leader>pi",
+    function()
+        paste_image()
+    end,
+    { desc = "Paste clipboard image and insert includegraphics" }
+)
+
