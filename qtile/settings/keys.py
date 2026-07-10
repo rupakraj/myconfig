@@ -29,7 +29,7 @@ keys = [
         ([mod], "f", lazy.window.toggle_fullscreen()),
         ([mod], "Tab", lazy.next_layout()),
         ([mod], "w", lazy.window.kill()),
-       
+
         # Restart Qtile
         ([mod, "control"], "r", lazy.restart()),
         ([mod, "control"], "q", lazy.shutdown()),
@@ -53,7 +53,7 @@ keys = [
 
         # multiple keyboard layout
         ([alt], "Shift_L",  lazy.widget["keyboardlayout"].next_keyboard()),
-        
+
         # Switch focus of monitors
         ([mod], "period", lazy.next_screen()),
         ([mod], "comma", lazy.prev_screen()),

@@ -38,8 +38,19 @@ floating_layout = layout.Floating(
         Match(wm_class='makebranch'),
         Match(wm_class='maketag'),
         Match(wm_class='ssh-askpass'),
+        Match(wm_class='GtkFileChooserDialog'),
+
+        Match(wm_type='dialog'),
+        Match(wm_type='toolbar'),
+        Match(wm_type='splash'),
+
         Match(title='branchdialog'),
         Match(title='pinentry'),
+        Match(title='Save Diagram'),
+
+        # Match(wm_class="code"),
+        # Match(wm_class="fp-dialog"),
+        # Match(role="GtkFileChooserDialog"),
     ],
     border_focus=colors["color4"][0]
 )

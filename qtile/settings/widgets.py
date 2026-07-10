@@ -52,7 +52,7 @@ def workspaces():
             padding_y   = 8,
             padding_x   = 3,
             borderwidth = 3.5,
-            
+
             active      = colors["active"],
             inactive    = colors["inactive"],
 
@@ -62,7 +62,7 @@ def workspaces():
 
             highlight_method     = "line",
             urgent_alert_method  = "block",
-            
+
             urgent_border               = colors["urgent"],
             this_current_screen_border  = colors["focus"],
             this_screen_border          = colors["grey"],
@@ -94,22 +94,22 @@ primary_widgets = [
 
     *workspaces(),
     separator(),
-    
+
     widget.Sep(**base(bg="dark"), linewidth=0, **decoration_angle_right),
     widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65),
     widget.Sep(**base(bg="color2"), linewidth=0, **decoration_slash),
-    
-    # Check the naming convention here: 
+
+    # Check the naming convention here:
     # cat /sys/class/power_supply/BATT/model_name
     widget.UPowerWidget(
         **base(bg = "color1"),
         battery_height = 12,
-        battery_name = "BATT",        
+        battery_name = "BATT",
         text_charging = "󰂉 ({percentage:.0f}%) {ttf}",
         text_discharging = '󰂍 ({percentage:.0f}%) {tte}',
         **decoration_slash
     ),
-   
+
     widget.WiFiIcon(
         **base(bg = "color3"),
         interface = "wlp1s0",
@@ -117,14 +117,24 @@ primary_widgets = [
         update_interval = 30,
         **decoration_slash,
     ),
-    
-   
+
+
     widget.KeyboardLayout(
         **base(bg = "color2"),
         configured_keyboards = ['us', 'np'],
         **decoration_slash,
     ),
-    
+
+    widget.PulseVolume(
+        **base(bg = "color3"),
+        step = 5,
+        fontsize = 20,
+        emoji = True,
+        emoji_list = ['🔇', '🔈', '🔉', '🔊'],
+        **decoration_slash,
+
+    ),
+
     widget.Systray(
         background = colors["focus"],
         padding    = 5,
@@ -137,18 +147,18 @@ primary_widgets = [
     #     text="CHiPSAL-30Oct",
     #     **decoration_slash,
     # ),
-    
+
     # widget.Clock(
-    #     **base(bg="color3"), 
-    #     format   = " %d %b / %I:%M%p ", 
+    #     **base(bg="color3"),
+    #     format   = " %d %b / %I:%M%p ",
     #     fmt="IST {}",
     #     timezone = ist_tz,
     #     **decoration_slash,
     # ),
 
     widget.Clock(
-        **base(bg = "color2"), 
-        format    = "%a %d %b / %I:%M ", 
+        **base(bg = "color2"),
+        format    = "%a %d %b / %I:%M ",
         fmt       = "  {}"
     ),
 
@@ -168,8 +178,8 @@ secondary_widgets = [
     widget.CurrentLayoutIcon(**base(bg="color1"), scale=0.65, **decoration_slash),
     widget.Sep(**base(bg="color1"), linewidth=0, **decoration_slash),
     widget.Clock(
-        **base(bg = "color2"), 
-        format    = "%a %d %b / %I:%M ", 
+        **base(bg = "color2"),
+        format    = "%a %d %b / %I:%M ",
         fmt       = "  {}"
     ),
     powerline("dark", "color1"),

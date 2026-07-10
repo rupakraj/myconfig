@@ -19,13 +19,13 @@ default_wallpaper = "~/wallpapers/default.jpg"
 
 @hook.subscribe.startup_once
 def autostart():
-    subprocess.call([os.path.join(qtile_path, 'autostart.sh')])
+    subprocess.Popen([os.path.join(qtile_path, 'autostart.sh')])
 
 
 @hook.subscribe.screens_reconfigured
 def update_wallpapers():
-    wallpapers = [os.path.join(os.path.expanduser(wallpaper_dir), f) 
-                  for f in os.listdir(os.path.expanduser(wallpaper_dir)) 
+    wallpapers = [os.path.join(os.path.expanduser(wallpaper_dir), f)
+                  for f in os.listdir(os.path.expanduser(wallpaper_dir))
                   if f.endswith(('.jpg', '.png'))]
     for i, screen in enumerate(screens):
         if i < len(wallpapers):
