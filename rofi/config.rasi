@@ -1,0 +1,14 @@
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+configuration {
+    modi: "combi";
+    combi-modi: "window,drun";
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: "Apps";
+    display-window: "Windows";
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+//@theme "/usr/share/rofi/themes/android_notification.rasi"
+
+//@theme "catppuccin-mocha"
