@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkMenu" id="power-menu">
+  <object class="GtkMenu" id="menu">
     <child>
       <object class="GtkMenuItem" id="shutdown">
         <property name="visible">True</property>
@@ -13,7 +13,7 @@
       <object class="GtkMenuItem" id="reboot">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="label" translatable="yes">  Reboot</property>
+        <property name="label" translatable="yes">↻  Reboot</property>
         <signal name="activate" handler="reboot" />
       </object>
     </child>
@@ -29,7 +29,7 @@
       <object class="GtkMenuItem" id="hibernate">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="label" translatable="yes">  Hibernate</property>
+        <property name="label" translatable="yes">💤  Hibernate</property>
         <signal name="activate" handler="hibernate" />
       </object>
     </child>
