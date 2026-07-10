@@ -267,6 +267,7 @@ include /etc/sway/config.d/*
     bindsym $mod+Return exec $term
     bindsym $mod+e exec nemo
     bindsym $mod+slash exec $menu
+    bindsym $mod+Control+l exec swaylock -f -c 000000
     bindsym $mod+space exec swaymsg input type:keyboard xkb_switch_layout next
 
     # set primary display
